@@ -4,7 +4,7 @@ import { getFirestore, collection, onSnapshot, doc, setDoc, deleteDoc, writeBatc
 
 // Keep this config in sync with demo3.js. Replace placeholders using Firebase Console > Project settings.
 const firebaseConfig = {
-   apiKey: "AIzaSyCcCOamkYCuiLaEVuWCP6OU2eTquPzxfhc",
+    apiKey: "AIzaSyCcCOamkYCuiLaEVuWCP6OU2eTquPzxfhc",
   authDomain: "desing3-1bb28.firebaseapp.com",
   projectId: "desing3-1bb28",
   storageBucket: "desing3-1bb28.firebasestorage.app",
