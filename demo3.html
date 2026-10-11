@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ka">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#201d19">
+  <meta name="description" content="ქართული სამზარეულოს ციფრული მენიუ">
+  <title>მარანი — ციფრული მენიუ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&family=Noto+Serif+Georgian:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="demo3.css">
+  <script type="module" src="demo3.js"></script>
+</head>
+<body>
+  <div class="ambient-glow" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Marani home">
+      <span class="brand-mark" aria-hidden="true">მ</span>
+      <span class="brand-copy"><strong id="brandName">მარანი</strong><small data-i18n="brandTagline">ქართული გემო · ღვინის კულტურა</small></span>
+    </a>
+    <div class="header-actions">
+      <label class="sr-only" for="languageSelect" data-i18n="chooseLanguage">ენის არჩევა</label>
+      <select id="languageSelect" class="language-select" aria-label="Language">
+        <option value="ka">ქართული</option><option value="en">English</option><option value="ru">Русский</option>
+      </select>
+      <button class="cart-top-button" id="openCartButton" type="button" aria-haspopup="dialog">
+        <span aria-hidden="true">♧</span><span data-i18n="cart">კალათა</span><b id="cartCount">0</b>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero container">
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span><span data-i18n="heroEyebrow">სუფრა იწყება აქ</span></p>
+        <h1 data-i18n="heroTitle">ქართული გემო,<br><em>თბილი ამბავი.</em></h1>
+        <p class="hero-description" data-i18n="heroDescription">შეარჩიეთ საყვარელი კერძები, აღმოაჩინეთ ჩვენი ღვინოები და შექმენით თქვენი სუფრა.</p>
+        <div class="hero-highlights"><span>✦ <span data-i18n="freshIngredients">ნატურალური ინგრედიენტები</span></span><span>✦ <span data-i18n="georgianHospitality">ქართული სტუმართმოყვარეობა</span></span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="wine-rack rack-one"></div><div class="wine-rack rack-two"></div>
+        <div class="hero-medallion"><span>მარანი</span><b>✦</b><small>EST. WITH LOVE</small></div>
+      </div>
+    </section>
+
+    <section class="menu-section container" id="menu">
+      <div class="section-heading">
+        <div><p class="eyebrow"><span></span><span data-i18n="ourMenu">ჩვენი მენიუ</span></p><h2 data-i18n="menuTitle">აირჩიეთ თქვენი გემო</h2></div>
+        <p class="menu-caption" data-i18n="menuCaption">მომზადებულია სიყვარულით<br>და საუკეთესო ინგრედიენტებით.</p>
+      </div>
+      <nav class="category-list" id="categoryFilters" aria-label="Menu categories"></nav>
+      <div class="menu-meta"><span id="resultCount">15 კერძი</span><span class="meta-line"></span><span data-i18n="pricesInGel">ფასები მითითებულია ლარში</span></div>
+      <div class="product-grid" id="productGrid" aria-live="polite"></div>
+      <div class="empty-state" id="emptyState" hidden>
+        <span class="empty-icon">✦</span><h3 data-i18n="nothingHere">ამ სექციაში ჯერ არაფერია</h3><p data-i18n="tryAnotherCategory">სცადეთ სხვა კატეგორიის არჩევა.</p>
+      </div>
+    </section>
+
+    <section class="closing-note container">
+      <div class="closing-ornament" aria-hidden="true">✦</div>
+      <p class="eyebrow" data-i18n="closingEyebrow">სუფრა უფრო მეტია, ვიდრე კერძები</p>
+      <h2 data-i18n="closingTitle">ეს არის დრო, რომელსაც ერთმანეთს ვუთმობთ.</h2>
+      <p data-i18n="closingText">აირჩიეთ, გააზიარეთ და ისიამოვნეთ — ჩვენ კი თქვენს სუფრას გემოს შევმატებთ.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true">მ</span><span class="brand-copy"><strong>მარანი</strong><small data-i18n="brandTagline">ქართული გემო · ღვინის კულტურა</small></span></a>
+      <p data-i18n="footerLine">შექმნილია გულით · გემოსთვის, რომელიც გახსოვთ</p>
+      <a href="#top" class="back-top"><span data-i18n="backToTop">თავში დაბრუნება</span> ↑</a>
+    </div>
+    <div class="footer-bottom container"><span>© <span id="currentYear"></span> <span data-i18n="rights">ყველა უფლება დაცულია</span></span><span class="footer-dot">●</span><span data-i18n="footerSignature">ქართული სუფრის ტრადიცია</span></div>
+  </footer>
+
+  <div class="cart-overlay" id="cartOverlay" hidden></div>
+  <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle" aria-hidden="true">
+    <div class="cart-drawer-head"><div><p class="eyebrow" data-i18n="yourSelection">თქვენი არჩევანი</p><h2 id="cartTitle" data-i18n="cartTitle">შეკვეთის კალათა</h2></div><button class="icon-button" id="closeCartButton" type="button" aria-label="Close cart">×</button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-empty" id="cartEmpty"><span>♧</span><p data-i18n="cartEmpty">კალათა ჯერ ცარიელია.<br>შეარჩიეთ თქვენთვის სასურველი კერძები.</p></div>
+    <div class="cart-summary"><div class="summary-row"><span data-i18n="subtotal">შუალედური ჯამი</span><strong id="cartSubtotal">₾0.00</strong></div><div class="summary-row total-row"><span data-i18n="total">სულ გადასახდელი</span><strong id="cartTotal">₾0.00</strong></div><button class="primary-button full-button" id="summaryButton" type="button" data-i18n="showOrderSummary">შეკვეთის შეჯამება</button><p class="cart-hint" data-i18n="cartHint">ეს დემო კალათაა — შეკვეთა ჯერ არ იგზავნება.</p></div>
+  </aside>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

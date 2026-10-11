@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ka">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#201d19">
+  <title>მარანი — ადმინისტრირება</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&family=Noto+Serif+Georgian:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="demoadmin3.css">
+  <script type="module" src="demoadmin3.js"></script>
+</head>
+<body>
+  <header class="admin-header">
+    <a class="brand" href="demo3.html"><span class="brand-mark">მ</span><span class="brand-copy"><strong data-i18n="brand">მარანი</strong><small data-i18n="adminSubtitle">მენიუს მართვის პანელი</small></span></a>
+    <div class="header-right"><span class="mode-pill" id="modePill"><i></i><span data-i18n="demoMode">დემო რეჟიმი</span></span><label class="sr-only" for="adminLanguage" data-i18n="language">ენა</label><select id="adminLanguage" class="field language-select"><option value="ka">ქართული</option><option value="en">English</option><option value="ru">Русский</option></select><button id="logoutButton" class="outline-button" type="button" hidden data-i18n="logout">გასვლა</button><a class="outline-button link-button" href="demo3.html" data-i18n="openMenu">მენიუს ნახვა ↗</a></div>
+  </header>
+  <main class="admin-container">
+    <section class="page-intro"><div><p class="eyebrow"><span></span><span data-i18n="workspace">სამუშაო სივრცე</span></p><h1 data-i18n="pageTitle">მენიუს მართვა</h1><p data-i18n="pageDescription">დაამატეთ კერძები, შეცვალეთ ფასი და აკონტროლეთ ხელმისაწვდომობა.</p></div><div class="intro-mark" aria-hidden="true">✦</div></section>
+
+    <section class="login-card" id="loginCard" hidden>
+      <div class="card-title"><div><p class="eyebrow" data-i18n="secureAccess">დაცული წვდომა</p><h2 data-i18n="loginTitle">მენეჯერის შესვლა</h2></div><span class="title-icon">⌑</span></div>
+      <p class="helper-text" data-i18n="loginDescription">შეიყვანეთ Firebase Authentication-ში წინასწარ შექმნილი მენეჯერის ანგარიში.</p>
+      <form id="loginForm" class="login-form"><label><span data-i18n="email">ელფოსტა</span><input class="field" id="loginEmail" type="email" autocomplete="username" required></label><label><span data-i18n="password">პაროლი</span><input class="field" id="loginPassword" type="password" autocomplete="current-password" required></label><button class="primary-button" type="submit" data-i18n="signIn">შესვლა</button></form>
+      <p class="form-note error-note" id="loginError" hidden></p>
+    </section>
+
+    <div class="admin-workspace" id="adminWorkspace">
+      <section class="form-card panel-card">
+        <div class="card-title"><div><p class="eyebrow" data-i18n="productSetup">პროდუქტის მონაცემები</p><h2 id="formTitle" data-i18n="addProduct">ახალი კერძის დამატება</h2></div><span class="title-icon">＋</span></div>
+        <p class="helper-text" data-i18n="translationNote">შეავსეთ სახელი და აღწერა არჩეულ ენაზე, შემდეგ დააჭირეთ თარგმნას. შედეგის ველების შესწორებაც შეგიძლიათ.</p>
+        <form id="productForm">
+          <div class="form-grid">
+            <label class="field-wrap"><span data-i18n="sourceLanguage">შეყვანის ენა</span><select class="field" id="sourceLanguage"><option value="ka">ქართული</option><option value="en">English</option><option value="ru">Русский</option></select></label>
+            <label class="field-wrap"><span data-i18n="category">სექცია</span><select class="field" id="categorySelect" required></select></label>
+            <label class="field-wrap full-span"><span data-i18n="productName">კერძის დასახელება</span><input class="field" id="nameInput" type="text" maxlength="100" required data-i18n-placeholder="namePlaceholder" placeholder="მაგ. იმერული ხაჭაპური"></label>
+            <label class="field-wrap full-span"><span data-i18n="description">აღწერა</span><textarea class="field textarea" id="descriptionInput" rows="3" maxlength="350" required data-i18n-placeholder="descriptionPlaceholder" placeholder="კერძის მოკლე აღწერა..."></textarea></label>
+          </div>
+          <section class="translation-box"><div class="translation-box-head"><div><h3 data-i18n="translations">თარგმანები</h3><p data-i18n="translationsHint">თარგმანი ავტომატურად წარმოიქმნება და მისი რედაქტირებაც შეგიძლიათ.</p></div><button type="button" class="outline-button translate-button" id="translateButton"><span>✦</span> <span data-i18n="translateNow">თარგმნა</span></button></div><div class="translation-fields" id="translationFields"></div><p class="form-note" id="translationStatus" role="status" aria-live="polite"></p></section>
+          <div class="form-grid price-grid">
+            <label class="field-wrap"><span data-i18n="priceGel">ფასი (₾)</span><input class="field" id="priceInput" type="number" inputmode="decimal" min="0" step="0.01" required placeholder="0.00"></label>
+            <label class="field-wrap"><span data-i18n="photo">ფოტო</span><input class="field file-field" id="photoInput" type="file" accept="image/*"><small class="field-help" data-i18n="photoHint">ატვირთეთ ფოტო მოწყობილობიდან (სასურველია 5MB-მდე).</small></label>
+          </div>
+          <div class="wine-settings" id="wineSettings" hidden><label class="check-line"><input id="glassEnabled" type="checkbox"><span class="custom-check"></span><span data-i18n="sellByGlass">ღვინის ჭიქით გაყიდვის ჩართვა</span></label><label class="field-wrap glass-price-wrap" id="glassPriceWrap" hidden><span data-i18n="glassPrice">ჭიქის ფასი (₾)</span><input class="field" id="glassPriceInput" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00"></label><p class="field-help" data-i18n="wineHint">ღვინის ძირითადი ფასი ჩაითვლება ბოთლის ფასად.</p></div>
+          <div class="image-preview-row" id="imagePreviewRow" hidden><img id="imagePreview" alt="Product preview"><div><strong data-i18n="selectedImage">არჩეული ფოტო</strong><span id="imageFileName"></span><button type="button" id="removeImageButton" class="text-button" data-i18n="removeImage">ფოტოს მოხსნა</button></div></div>
+          <div class="form-actions"><button class="primary-button" id="saveButton" type="submit"><span>＋</span> <span data-i18n="saveProduct">კერძის შენახვა</span></button><button class="outline-button" id="cancelEditButton" type="button" hidden data-i18n="cancelEdit">რედაქტირების გაუქმება</button></div>
+          <p class="form-note" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="list-card panel-card">
+        <div class="card-title list-card-title"><div><p class="eyebrow" data-i18n="catalog">კატალოგი</p><h2 data-i18n="productsList">კერძების სია</h2></div><span class="count-badge" id="itemCount">15</span></div>
+        <div class="list-toolbar"><label class="search-field"><span aria-hidden="true">⌕</span><input id="searchInput" class="field" type="search" data-i18n-placeholder="searchPlaceholder" placeholder="კერძის ძიება..."></label><select class="field status-filter" id="statusFilter" aria-label="Status"><option value="all" data-i18n="allStatuses">ყველა სტატუსი</option><option value="active" data-i18n="available">აქტიური</option><option value="stopped" data-i18n="stopped">სტოპში</option></select></div>
+        <div class="demo-import-row" id="demoImportRow" hidden><p data-i18n="importHint">Firestore ჯერ ცარიელია. შეგიძლია ჩატვირთო 15 სატესტო კერძი.</p><button type="button" id="importDemoButton" class="outline-button" data-i18n="importDemos">15 დემო კერძის ჩატვირთვა</button></div>
+        <div class="product-list" id="productList"></div>
+        <div class="list-empty" id="listEmpty" hidden><span>✦</span><p data-i18n="noProducts">შესაბამისი კერძი ვერ მოიძებნა.</p></div>
+        <p class="list-footnote" data-i18n="listFootnote">სტოპში გაშვებული კერძი სტუმრის მენიუში აღარ გამოჩნდება.</p>
+      </section>
+    </div>
+    <footer class="admin-footer"><span data-i18n="adminFooter">მარანი · მენიუს მართვის სივრცე</span><span class="footer-wood-mark">✦</span><a href="demo3.html" data-i18n="viewCustomerMenu">მომხმარებლის მენიუ →</a></footer>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
