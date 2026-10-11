@@ -3,7 +3,7 @@ import { getFirestore, collection, onSnapshot } from 'https://www.gstatic.com/fi
 
 // Firebase console > Project settings > Your apps. Leave placeholders for local demo mode.
 const firebaseConfig = {
-   apiKey: "AIzaSyCcCOamkYCuiLaEVuWCP6OU2eTquPzxfhc",
+  apiKey: "AIzaSyCcCOamkYCuiLaEVuWCP6OU2eTquPzxfhc",
   authDomain: "desing3-1bb28.firebaseapp.com",
   projectId: "desing3-1bb28",
   storageBucket: "desing3-1bb28.firebasestorage.app",
